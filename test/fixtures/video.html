@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="en">
+  <head><meta charset="utf-8" /><title>Page with a video</title></head>
+  <body style="background:#030712;color:#fff;font:16px system-ui">
+    <h1>Video fixture</h1>
+    <!-- muted + autoplay so the request actually fires without interaction -->
+    <video id="clip" src="/media/clip.mp4" autoplay muted loop playsinline width="640"></video>
+    <video id="withsources" muted playsinline width="320">
+      <source src="/media/alt.webm" type="video/webm" />
+    </video>
+  </body>
+</html>

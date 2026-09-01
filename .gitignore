@@ -1,0 +1,7 @@
+node_modules
+dist
+.browsers
+*.zip
+public/ffmpeg
+public/tesseract
+tsconfig.tsbuildinfo

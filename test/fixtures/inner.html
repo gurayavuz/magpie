@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Inner scroll container (app-shell layout)</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { height: 100%; overflow: hidden; }
+      body { font: 700 48px system-ui, sans-serif; color: #fff; display: flex; }
+      #rail { width: 120px; background: #111827; flex: none; }
+      /* The document does not scroll; this column does. */
+      #feed { flex: 1; height: 100%; overflow-y: auto; }
+      .band { height: 500px; display: flex; align-items: center; padding-left: 40px; }
+    </style>
+  </head>
+  <body>
+    <div id="rail"></div>
+    <div id="feed"><div id="bands"></div></div>
+    <script>
+      const COLORS = [
+        '#e11d48', '#ea580c', '#ca8a04', '#16a34a',
+        '#0891b2', '#2563eb', '#7c3aed', '#db2777',
+      ]
+      const bands = document.getElementById('bands')
+      COLORS.forEach((color, index) => {
+        const band = document.createElement('div')
+        band.className = 'band'
+        band.dataset.index = String(index)
+        band.dataset.color = color
+        band.style.background = color
+        band.textContent = 'Band ' + index
+        bands.appendChild(band)
+      })
+    </script>
+  </body>
+</html>

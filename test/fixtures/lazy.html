@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lazy-loaded images</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 700 32px system-ui, sans-serif; color: #fff; background: #030712; }
+      .slot { height: 500px; display: flex; align-items: center; justify-content: center; }
+      /* No intrinsic size until loaded, so a missed image leaves the page background. */
+      img { width: 100%; height: 500px; object-fit: cover; display: block; }
+    </style>
+  </head>
+  <body>
+    <div id="slots"></div>
+    <script>
+      // Served with an artificial delay, so they only resolve if the capture
+      // actually primed them and then waited.
+      const COLORS = ['e11d48', 'ea580c', 'ca8a04', '16a34a', '0891b2', '2563eb', '7c3aed', 'db2777']
+      const slots = document.getElementById('slots')
+      COLORS.forEach((color, index) => {
+        const slot = document.createElement('div')
+        slot.className = 'slot'
+        const image = document.createElement('img')
+        image.loading = 'lazy'
+        image.dataset.index = String(index)
+        image.dataset.color = '#' + color
+        image.src = '/img/' + color + '.png'
+        image.alt = 'Band ' + index
+        slot.appendChild(image)
+        slots.appendChild(slot)
+      })
+    </script>
+  </body>
+</html>

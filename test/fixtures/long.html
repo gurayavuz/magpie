@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Long page with sticky and fixed furniture</title>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { font: 700 48px system-ui, sans-serif; color: #fff; }
+      #sticky {
+        position: sticky; top: 0; height: 60px; background: #111827;
+        display: flex; align-items: center; padding: 0 16px; font-size: 20px; z-index: 10;
+      }
+      #fixed {
+        position: fixed; right: 16px; bottom: 16px; padding: 12px 20px;
+        background: #dc2626; border-radius: 8px; font-size: 16px; z-index: 20;
+      }
+      .band { height: 500px; display: flex; align-items: center; padding-left: 40px; }
+    </style>
+  </head>
+  <body>
+    <div id="sticky">Sticky header (should appear once, at the top)</div>
+    <div id="fixed">Fixed badge (should appear once)</div>
+    <div id="bands"></div>
+    <script>
+      // Distinct, widely separated colours so a sampled pixel identifies its band
+      // unambiguously even after JPEG-style rounding.
+      const COLORS = [
+        '#e11d48', '#ea580c', '#ca8a04', '#16a34a',
+        '#0891b2', '#2563eb', '#7c3aed', '#db2777',
+        '#0f766e', '#4d7c0f', '#b91c1c', '#1e3a8a',
+      ]
+      const bands = document.getElementById('bands')
+      COLORS.forEach((color, index) => {
+        const band = document.createElement('div')
+        band.className = 'band'
+        band.dataset.index = String(index)
+        band.dataset.color = color
+        band.style.background = color
+        band.textContent = 'Band ' + index
+        bands.appendChild(band)
+      })
+    </script>
+  </body>
+</html>

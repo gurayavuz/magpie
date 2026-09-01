@@ -1,0 +1,47 @@
+{
+  "name": "magpie",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b --noEmit && vite build",
+    "preview": "vite preview",
+    "zip": "npm run build && cd dist && zip -r ../all-in-one.zip .",
+    "test": "npm run build && node test/run.mjs",
+    "test:browser": "npx @puppeteer/browsers install chrome@stable --path .browsers",
+    "prebuild": "node tools/sync-ffmpeg.mjs && node tools/sync-tesseract.mjs"
+  },
+  "dependencies": {
+    "@ffmpeg/core": "^0.12.10",
+    "@ffmpeg/ffmpeg": "^0.12.15",
+    "@ffmpeg/util": "^0.12.2",
+    "@mozilla/readability": "^0.6.0",
+    "@tesseract.js-data/eng": "^1.0.0",
+    "fflate": "^0.8.3",
+    "mammoth": "^1.12.2",
+    "marked": "^18.0.11",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.3.289",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "tesseract.js": "^7.0.0",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2"
+  },
+  "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.0-beta.33",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/chrome": "^0.2.7",
+    "@types/node": "^26.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@types/turndown": "^5.0.6",
+    "@vitejs/plugin-react": "^6.1.1",
+    "puppeteer-core": "^25.9.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.2.2"
+  },
+  "description": "Browser toolkit: full-page screenshots, media downloads, article clipping, file conversion."
+}
